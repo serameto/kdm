@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+/* iOS Safari's address bar makes 100vh taller than the actually visible
+   area, cutting off fixed-height layouts. Prefer the dynamic viewport
+   height unit where supported so the app shell always matches what's
+   actually on screen. */
+.app-shell {
+  height: 100vh;
+}
+@supports (height: 100dvh) {
+  .app-shell {
+    height: 100dvh;
+  }
+}

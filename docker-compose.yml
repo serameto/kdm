@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  server:
+    build: ./server
+    restart: unless-stopped
+    environment:
+      - PORT=4000
+      - JWT_SECRET=${JWT_SECRET:-dev-only-change-me}
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost}
+    volumes:
+      - ./server/data.sqlite:/app/data.sqlite
+      - ./server/uploads:/app/uploads
+    expose:
+      - "4000"
+
+  client:
+    build: ./client
+    restart: unless-stopped
+    depends_on:
+      - server
+    ports:
+      - "80:80"

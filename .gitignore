@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+server/uploads/*
+!server/uploads/.gitkeep
+.DS_Store
+.claude/settings.local.json
